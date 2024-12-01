@@ -1,0 +1,31 @@
+Learning Linux
+
+how to change a user 
+su - //root user に切り替える。
+root user は全てのコマンドを行うことができるため、
+必要不可欠な時のみ使用すること。
+
+
+account is stored in etc/passwd
+
+sudo useradd username // create a user, username
+sudo useradd -e(expireation date) 2025/12/31 username //2026年1月1日にusernameが消える
+change -E 2027/12/31 username //有効期間を2027年12月31日に変更
+sudo passwd username  // set the passswd for username 
+sudo chage -l username //check when a user is expired, passwd is created at,  number of days warning before passwd is expired
+
+sudo usermod -l changedusername username //username　のユーザーIDをchangedusername にかえる
+sudo usermod -e "comments here like a user of feature" username //comments might help finding a user faster
+cat /etc/passwd // passwd 有効期間　有効期限、などの設定が見れる
+sudo chage -E 2028/12/31 username // username の有効期間を2028年12/31に設定する
+sudo passwd -l username // username にロックをかける
+sudo passwd -u username // unlock username
+
+
+// settings for passwd, UID/GIDの範囲,  ディレクトリ関連設定, シェル設定, メール設定,その他の設定
+ /etc/loing.def
+
+
+//usernameをsudo グループに追加する。
+ usermod -aG sudo username
+
